@@ -9,7 +9,12 @@ import SwiftUI
 
 struct ContentView: View {
        var body: some View {
-              IconBarView()
+              ZStack {
+                     Color(.lightGray).opacity(0.2)
+                            .edgesIgnoringSafeArea(.all)
+                     
+                     PostView()
+              }
        }
 }
 

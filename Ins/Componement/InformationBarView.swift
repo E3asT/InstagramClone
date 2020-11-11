@@ -14,7 +14,7 @@ struct InformationBarView: View {
                      Image(images.icon)
                             .resizable()
                             .scaledToFit()
-                            .frame(width: 45, height: 45)
+                            .frame(width: 40, height: 40)
                             .clipShape(Circle())
                      
                      Text("East")
