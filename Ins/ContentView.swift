@@ -13,7 +13,35 @@ struct ContentView: View {
                      Color(.lightGray).opacity(0.2)
                             .edgesIgnoringSafeArea(.all)
                      
-                     PostView()
+                     VStack {
+                            HStack {
+                                   Image(systemName: "camera")
+                                   
+                                   Spacer()
+                                   Text("Instagram")
+                                   
+                                   Spacer()
+                                   Image(systemName: "paperplane")
+                                          
+                            }
+                            .padding()
+                            .font(.title2)
+                            
+                            ScrollView {
+                                   VStack {
+                                          Divider()
+                                          StoryView()
+                                                 .padding(.top, 15)
+                                          
+                                          ForEach(/*@START_MENU_TOKEN@*/0 ..< 5/*@END_MENU_TOKEN@*/) { item in
+                                                 PostView()
+                                          }
+                                   }
+                            }
+                            
+                            Text("UI2")
+                                   .font(.title)
+                     }
               }
        }
 }

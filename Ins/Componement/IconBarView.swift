@@ -50,7 +50,7 @@ struct IconBarView: View {
                      .font(.system(size: 25, weight: .light))
                      .padding(.horizontal, 10)
                      .padding(.vertical, 15)
-                     .animation(.linear(duration: 0.2))
+                     .animation(.default)
               }
        }
        

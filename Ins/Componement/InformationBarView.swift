@@ -19,6 +19,7 @@ struct InformationBarView: View {
                      
                      Text("East")
                      
+                     
                      Spacer()
                      Image(systemName: "ellipsis")
                             .imageScale(.large)
