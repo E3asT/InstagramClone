@@ -8,16 +8,17 @@
 import SwiftUI
 
 struct InformationBarView: View {
-       let images = Images()
+       var post: Post = posts[1]
+       
        var body: some View {
               HStack(alignment: .center, spacing: 15) {
-                     Image(images.icon)
+                     Image(post.icon)
                             .resizable()
-                            .scaledToFit()
+                            .scaledToFill()
                             .frame(width: 40, height: 40)
                             .clipShape(Circle())
                      
-                     Text("East")
+                     Text(post.name)
                      
                      
                      Spacer()

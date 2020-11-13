@@ -8,14 +8,21 @@
 import SwiftUI
 
 struct ImageView: View {
-       let images = Images()
+       @State var post: Post = posts[0]
        
        var body: some View {
-              Image(images.burger)
+              Image(post.picture)
                      .resizable()
                      .frame(width: 375, height: 375)
                      .scaledToFit()
+                     .onTapGesture {
+                            imageOnTapGesture()
+                     }
               
+       }
+       
+       func imageOnTapGesture() {
+              post.isLiked.toggle()
        }
 }
 

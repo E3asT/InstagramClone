@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct DescriptionView: View {
-       let east = "East"
+       @State var post: Post = posts[0]
        
        var body: some View {
               VStack(alignment: .leading, spacing: 10) {
                      HStack(alignment: .lastTextBaseline) {
-                            Text("15555")
+                            Text(post.like)
                             
                             Text("Likes")
                             
@@ -21,12 +21,12 @@ struct DescriptionView: View {
                      }
                      
                      HStack(alignment: .top) {
-                            Text("East What a incredibly burger, perhaps one of the most succulet I ever tast in my life. I'm so greatfull to be enable to eat that !")
+                            Text(post.description)
                                    .multilineTextAlignment(.leading)
                                    .lineSpacing(2)
                      }
                      
-                     Text("See the 6 comments")
+                     Text("See the \(post.comments) comments")
                             .font(.system(size: 17))
                             .font(.footnote)
                             .foregroundColor(.secondary)

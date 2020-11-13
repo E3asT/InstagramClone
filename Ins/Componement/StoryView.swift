@@ -8,20 +8,20 @@
 import SwiftUI
 
 struct StoryView: View {
-       let images = Images()
+       @State var post: Post = posts[0]
        
        var body: some View {
               ScrollView(.horizontal, showsIndicators: false) {
                      HStack(spacing: 15) {
-                            ForEach(0 ..< 15) { item in
+                            ForEach(posts) { item in
                                    VStack(spacing: 5) {
-                                          Image(images.icon)
+                                          Image(item.icon)
                                                  .resizable()
                                                  .frame(width: 55, height: 55)
                                                  .scaledToFit()
                                                  .clipShape(Circle())
                                           
-                                          Text("East")
+                                          Text(item.name)
                                                  .font(.system(size: 20, weight: .regular))
                                    }
                             }

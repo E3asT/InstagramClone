@@ -14,18 +14,7 @@ struct ContentView: View {
                             .edgesIgnoringSafeArea(.all)
                      
                      VStack {
-                            HStack {
-                                   Image(systemName: "camera")
-                                   
-                                   Spacer()
-                                   Text("Instagram")
-                                   
-                                   Spacer()
-                                   Image(systemName: "paperplane")
-                                          
-                            }
-                            .padding()
-                            .font(.title2)
+                            BannerView()
                             
                             ScrollView {
                                    VStack {
@@ -33,9 +22,7 @@ struct ContentView: View {
                                           StoryView()
                                                  .padding(.top, 15)
                                           
-                                          ForEach(/*@START_MENU_TOKEN@*/0 ..< 5/*@END_MENU_TOKEN@*/) { item in
-                                                 PostView()
-                                          }
+                                          PostView()
                                    }
                             }
                             

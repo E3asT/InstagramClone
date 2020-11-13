@@ -8,13 +8,12 @@
 import SwiftUI
 
 struct IconBarView: View {
-       @State var isHeartTouched = false
-       @State var isBookmarkTouched = false
+       @State var post: Post = posts[0]
        
        var body: some View {
               VStack {
                      HStack(alignment: .center, spacing: 15) {
-                            if !isHeartTouched {
+                            if !post.isLiked {
                                    Image(systemName:  "suit.heart")
                                           .onTapGesture {
                                                  heartTapGesture()
@@ -33,7 +32,7 @@ struct IconBarView: View {
                             
                             Spacer()
                             VStack {
-                                   if !isBookmarkTouched {
+                                   if !post.isBookmark {
                                           Image(systemName: "bookmark")
                                                  .onTapGesture {
                                                         bookmarkGesture()
@@ -55,11 +54,11 @@ struct IconBarView: View {
        }
        
        func heartTapGesture() {
-              isHeartTouched.toggle()
+              post.isLiked.toggle()
        }
        
        func bookmarkGesture() {
-              isBookmarkTouched.toggle()
+              post.isBookmark.toggle()
        }
 }
 

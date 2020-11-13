@@ -9,17 +9,21 @@ import SwiftUI
 
 struct PostView: View {
        var body: some View {
-              VStack(spacing: 0) {
-                     Divider()
-                     InformationBarView()
-                     
-                     Divider()
-                     ImageView()
-                     
-                     Divider()
-                     IconBarView()
-                     
-                     DescriptionView()
+              ScrollView {
+                     ForEach(posts) { item in
+                            VStack(spacing: 0) {
+                                   Divider()
+                                   InformationBarView(post: item)
+                                   
+                                   Divider()
+                                   ImageView(post: item)
+                                   
+                                   Divider()
+                                   IconBarView(post: item)
+                                   
+                                   DescriptionView(post: item)
+                            }
+                     }
               }
        }
 }
