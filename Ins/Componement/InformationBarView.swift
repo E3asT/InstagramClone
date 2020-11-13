@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct InformationBarView: View {
-       var post: Post = posts[1]
+       @Binding var post: Post
        
        var body: some View {
               HStack(alignment: .center, spacing: 15) {
@@ -32,6 +32,6 @@ struct InformationBarView: View {
 
 struct InformationBarView_Previews: PreviewProvider {
        static var previews: some View {
-              InformationBarView()
+              InformationBarView(post: .constant(posts[1]))
        }
 }

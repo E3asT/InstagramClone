@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct IconBarView: View {
-       @State var post: Post = posts[0]
+       @Binding var post: Post
        
        var body: some View {
               VStack {
@@ -55,6 +55,12 @@ struct IconBarView: View {
        
        func heartTapGesture() {
               post.isLiked.toggle()
+              
+              if post.isLiked {
+                     post.like += 1
+              } else {
+                     post.like -= 1
+              }
        }
        
        func bookmarkGesture() {
@@ -64,6 +70,6 @@ struct IconBarView: View {
 
 struct IconBarView_Previews: PreviewProvider {
        static var previews: some View {
-              IconBarView()
+              IconBarView(post: .constant(posts[1]))
        }
 }

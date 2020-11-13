@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct DescriptionView: View {
-       @State var post: Post = posts[0]
+       @Binding var post: Post
        
        var body: some View {
               VStack(alignment: .leading, spacing: 10) {
                      HStack(alignment: .lastTextBaseline) {
-                            Text(post.like)
+                            Text("\(post.like)")
                             
                             Text("Likes")
                             
@@ -38,6 +38,6 @@ struct DescriptionView: View {
 
 struct DescriptionView_Previews: PreviewProvider {
        static var previews: some View {
-              DescriptionView()
+              DescriptionView(post: .constant(posts[1]))
        }
 }
