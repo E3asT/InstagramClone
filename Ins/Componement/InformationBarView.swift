@@ -12,11 +12,19 @@ struct InformationBarView: View {
        
        var body: some View {
               HStack(alignment: .center, spacing: 15) {
-                     Image(post.icon)
-                            .resizable()
-                            .scaledToFill()
-                            .frame(width: 40, height: 40)
-                            .clipShape(Circle())
+                     ZStack {
+                            Image(post.icon)
+                                   .resizable()
+                                   .scaledToFill()
+                                   .frame(width: 40, height: 40)
+                                   .clipShape(Circle())
+                            
+                            if post.isThereAStory {
+                                   StoryRingView(size: 50)
+                            } else {
+                                   StoryRingView(size: 50, lineWidth: 1, color: [Color(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)), Color(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1))])
+                            }
+                     }
                      
                      Text(post.name)
                      

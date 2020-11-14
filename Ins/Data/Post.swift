@@ -31,7 +31,7 @@ var posts = [
               like: 55,
               comments: "54",
               isLiked: true,
-              isThereAStory: false,
+              isThereAStory: true,
               isBookmark: false
        ),
        
@@ -40,7 +40,7 @@ var posts = [
               icon: "icon2",
               picture: "sunset",
               description: "Isn't the sunset neat ?",
-              like: 55550,
+              like: 5550,
               comments: "789",
               isLiked: false,
               isThereAStory: false,
@@ -55,19 +55,43 @@ var posts = [
               like: 666,
               comments: "5",
               isLiked: true,
-              isThereAStory: false,
+              isThereAStory: true,
               isBookmark: true
        ),
        
        Post(
-              name: "Otis",
-              icon: "icon2",
+              name: "Maeve",
+              icon: "maeve",
               picture: "otisCouche",
               description: "It's the best chair where I could sleep !",
               like: 166,
               comments: "78",
               isLiked: false,
               isThereAStory: false,
+              isBookmark: false
+       ),
+       
+       Post(
+              name: "Nizar",
+              icon: "nizar",
+              picture: "germes",
+              description: "I'm a chef and sometimes you know the simplest is juste the best",
+              like: 235,
+              comments: "16",
+              isLiked: true,
+              isThereAStory: false,
+              isBookmark: false
+       ),
+       
+       Post(
+              name: "Romain",
+              icon: "moi",
+              picture: "miami",
+              description: "Best view of my trip in Miami",
+              like: 25,
+              comments: "2",
+              isLiked: false,
+              isThereAStory: true,
               isBookmark: false
        )
 ]
