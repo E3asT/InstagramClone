@@ -9,7 +9,10 @@ import SwiftUI
 
 struct ImageView: View {
        @Binding var post: Post
+       
+       @State var isHeartReadyToShow = true
        @State var showHeart = false
+       @State var showBrokenHeart = false
        
        var body: some View {
               ZStack {
@@ -19,16 +22,19 @@ struct ImageView: View {
                             .scaledToFit()
                             .onTapGesture(count: 2) {
                                    imageOnTapGesture()
-                                   showHeart = true
-                                   Timer.scheduledTimer(withTimeInterval: 0.75, repeats: false) { (_) in
-                                          showHeart = false
-                                   }
-                     }
+                            }
                      
-                     if showHeart {
-                            Image(systemName: "heart.fill")
-                                   .foregroundColor(.red)
-                                   .font(.system(size: 125))
+                     if isHeartReadyToShow {
+                            if showHeart {
+                                   Image(systemName: "heart.fill")
+                                          .foregroundColor(.red)
+                                          .font(.system(size: 125))
+                                   
+                            } else if showBrokenHeart {
+                                   Image(systemName: "heart.slash.fill")
+                                          .foregroundColor(.red)
+                                          .font(.system(size: 125))
+                            }
                      }
               }
               .animation(.linear)
@@ -40,8 +46,21 @@ struct ImageView: View {
               
               if post.isLiked {
                      post.like += 1
+                     isHeartReadyToShow = true
+                     showHeart = true
+                     Timer.scheduledTimer(withTimeInterval: 0.75, repeats: false) { (_) in
+                            isHeartReadyToShow = false
+                            showHeart = false
+                     }
+                     
               } else {
                      post.like -= 1
+                     isHeartReadyToShow = true
+                     showBrokenHeart = true
+                     Timer.scheduledTimer(withTimeInterval: 0.75, repeats: false) { (_) in
+                            isHeartReadyToShow = false
+                            showBrokenHeart = false
+                     }
               }
        }
 }
