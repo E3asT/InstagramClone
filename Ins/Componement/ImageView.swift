@@ -9,15 +9,29 @@ import SwiftUI
 
 struct ImageView: View {
        @Binding var post: Post
+       @State var showHeart = false
        
        var body: some View {
-              Image(post.picture)
-                     .resizable()
-                     .frame(width: 375, height: 375)
-                     .scaledToFit()
-                     .onTapGesture(count: 2) {
-                            imageOnTapGesture()
+              ZStack {
+                     Image(post.picture)
+                            .resizable()
+                            .frame(width: 375, height: 375)
+                            .scaledToFit()
+                            .onTapGesture(count: 2) {
+                                   imageOnTapGesture()
+                                   showHeart = true
+                                   Timer.scheduledTimer(withTimeInterval: 0.75, repeats: false) { (_) in
+                                          showHeart = false
+                                   }
                      }
+                     
+                     if showHeart {
+                            Image(systemName: "heart.fill")
+                                   .foregroundColor(.red)
+                                   .font(.system(size: 125))
+                     }
+              }
+              .animation(.linear)
               
        }
        

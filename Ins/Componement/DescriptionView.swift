@@ -13,7 +13,7 @@ struct DescriptionView: View {
        var body: some View {
               VStack(alignment: .leading, spacing: 10) {
                      HStack(alignment: .lastTextBaseline) {
-                            Text("\(post.like)")
+                            Text("\(String(post.like))")
                             
                             Text("Likes")
                             

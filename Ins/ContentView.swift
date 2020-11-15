@@ -10,6 +10,9 @@ import SwiftUI
 struct ContentView: View {
        var body: some View {
               ZStack {
+                     Color("bannerColor")
+                            .edgesIgnoringSafeArea(.all)
+                     
                      VStack {
                             BannerView()
                             
@@ -20,11 +23,11 @@ struct ContentView: View {
                                                  .padding(.top, 15)
                                           
                                           PostView()
+                                          Divider()
                                    }
+                                   .background(Color("contentPost"))
                             }
-                            
-                            Text("UI2")
-                                   .font(.title)
+                            SidebarView()
                      }
               }
        }
