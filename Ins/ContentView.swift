@@ -12,9 +12,6 @@ struct ContentView: View {
        
        var body: some View {
               ZStack {
-                     Color("bannerColor")
-                            .edgesIgnoringSafeArea(.all)
-                     
                      TabView {
                             FeedView()
                                    .tabItem { Image(systemName: "house") }
