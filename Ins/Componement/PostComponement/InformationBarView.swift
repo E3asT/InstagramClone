@@ -20,9 +20,9 @@ struct InformationBarView: View {
                                    .clipShape(Circle())
                             
                             if post.isThereAStory {
-                                   StoryRingView(size: 50)
+                                   StoryRingView(size: 47)
                             } else {
-                                   StoryRingView(size: 50, lineWidth: 1, color: [Color(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)), Color(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1))])
+                                   StoryRingView(size: 47, lineWidth: 1, color: [Color(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)), Color(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1))])
                             }
                      }
                      

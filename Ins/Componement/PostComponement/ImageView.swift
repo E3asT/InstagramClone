@@ -27,13 +27,13 @@ struct ImageView: View {
                      if isHeartReadyToShow {
                             if showHeart {
                                    Image(systemName: "heart.fill")
-                                          .foregroundColor(.red)
-                                          .font(.system(size: 125))
+                                          .foregroundColor(.white)
+                                          .font(.system(size: 75))
                                    
                             } else if showBrokenHeart {
                                    Image(systemName: "heart.slash.fill")
-                                          .foregroundColor(.red)
-                                          .font(.system(size: 125))
+                                          .foregroundColor(.white)
+                                          .font(.system(size: 75))
                             }
                      }
               }
@@ -48,7 +48,8 @@ struct ImageView: View {
                      post.like += 1
                      isHeartReadyToShow = true
                      showHeart = true
-                     Timer.scheduledTimer(withTimeInterval: 0.75, repeats: false) { (_) in
+                     vibrationImpact(style: .medium)
+                     Timer.scheduledTimer(withTimeInterval: 0.65, repeats: false) { (_) in
                             isHeartReadyToShow = false
                             showHeart = false
                      }
@@ -57,16 +58,21 @@ struct ImageView: View {
                      post.like -= 1
                      isHeartReadyToShow = true
                      showBrokenHeart = true
+                     vibrationImpact(style: .medium)
                      Timer.scheduledTimer(withTimeInterval: 0.75, repeats: false) { (_) in
                             isHeartReadyToShow = false
                             showBrokenHeart = false
                      }
               }
        }
+       
+      func vibrationImpact(style: UIImpactFeedbackGenerator.FeedbackStyle) {
+           UIImpactFeedbackGenerator(style: style).impactOccurred()
+       }
 }
 
 struct ImageView_Previews: PreviewProvider {
        static var previews: some View {
-              ImageView(post: .constant(posts[1]))
+              ImageView(post: .constant(posts[3]))
        }
 }

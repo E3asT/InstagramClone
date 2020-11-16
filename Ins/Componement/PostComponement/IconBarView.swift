@@ -39,7 +39,7 @@ struct IconBarView: View {
                                                  }
                                    } else {
                                           Image(systemName: "bookmark.fill")
-                                                 .foregroundColor(Color.red.opacity(0.9))
+                                                 .foregroundColor(Color.primary)
                                                  .onTapGesture {
                                                         bookmarkGesture()
                                                  }
@@ -58,6 +58,8 @@ struct IconBarView: View {
               
               if post.isLiked {
                      post.like += 1
+                     vibrationImpact(style: .medium)
+                     
               } else {
                      post.like -= 1
               }
@@ -65,7 +67,15 @@ struct IconBarView: View {
        
        func bookmarkGesture() {
               post.isBookmark.toggle()
+              
+              if post.isBookmark {
+                     vibrationImpact(style: .medium)
+              }
        }
+       
+       func vibrationImpact(style: UIImpactFeedbackGenerator.FeedbackStyle) {
+            UIImpactFeedbackGenerator(style: style).impactOccurred()
+        }
 }
 
 struct IconBarView_Previews: PreviewProvider {
