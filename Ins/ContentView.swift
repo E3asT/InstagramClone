@@ -8,29 +8,35 @@
 import SwiftUI
 
 struct ContentView: View {
-       let post: Post = posts[2]
+       @State var showStory = false
        
        var body: some View {
               ZStack {
-                     TabView {
-                            FeedView()
-                                   .tabItem { Image(systemName: "house") }
+                     if !showStory {
+                            TabView {
+                                   FeedView(showStory: $showStory)
+                                          .tabItem { Image(systemName: "house") }
+                                   
+                                   SearchView()
+                                          .tabItem { Image(systemName: "magnifyingglass") }
+                                   
+                                   ShareContentView()
+                                          .tabItem { Image(systemName: "plus.app") }
+                                   
+                                   LikeView()
+                                          .tabItem { Image(systemName: "suit.heart") }
+                                   
+                                   UserView()
+                                          .tabItem {
+                                                 Image(systemName: "person.crop.circle")
+                                          }
+                            }
                             
-                            SearchView()
-                                   .tabItem { Image(systemName: "magnifyingglass") }
-                            
-                            ShareContentView()
-                                   .tabItem { Image(systemName: "plus.app") }
-                            
-                            LikeView()
-                                   .tabItem { Image(systemName: "suit.heart") }
-                            
-                            UserView()
-                                   .tabItem {
-                                          Image(systemName: "person.crop.circle")
-                                   }
+                     } else {
+                            StoryImageView(showStory: $showStory)
                      }
               }
+              .animation(.easeInOut)
        }
 }
 
@@ -49,6 +55,8 @@ struct ContentView_Previews: PreviewProvider {
 
 
 struct FeedView: View {
+       @Binding var showStory : Bool
+       
        var body: some View {
               VStack {
                      BannerView()
@@ -56,7 +64,7 @@ struct FeedView: View {
                      ScrollView {
                             VStack {
                                    Divider()
-                                   StoryView()
+                                   StoryRawView( showStory: $showStory)
                                           .padding(.top, 15)
                                    
                                    PostView()

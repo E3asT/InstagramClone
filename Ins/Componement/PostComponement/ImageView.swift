@@ -16,7 +16,7 @@ struct ImageView: View {
        
        var body: some View {
               ZStack {
-                     Image(post.picture)
+                     Image(post.image)
                             .resizable()
                             .frame(width: 375, height: 375)
                             .scaledToFit()
