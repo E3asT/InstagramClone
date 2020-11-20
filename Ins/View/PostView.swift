@@ -8,10 +8,12 @@
 import SwiftUI
 
 struct PostView: View {
+       @Binding var showStory : Bool
+       
        var body: some View {
               ScrollView {
                      ForEach(posts) { item in
-                            UIPostView(post: item)
+                            UIPostView(post: item, showStory: $showStory)
                      }
               }
        }
@@ -19,6 +21,6 @@ struct PostView: View {
 
 struct PostView_Previews: PreviewProvider {
        static var previews: some View {
-              PostView()
+              PostView(showStory: .constant(false))
        }
 }

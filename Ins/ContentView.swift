@@ -12,7 +12,10 @@ struct ContentView: View {
        
        var body: some View {
               ZStack {
-                     if !showStory {
+                     if showStory {
+                            FeedView(showStory: $showStory)
+                            StoryImageView(showStory: $showStory)
+                     } else {
                             TabView {
                                    FeedView(showStory: $showStory)
                                           .tabItem { Image(systemName: "house") }
@@ -29,14 +32,12 @@ struct ContentView: View {
                                    UserView()
                                           .tabItem {
                                                  Image(systemName: "person.crop.circle")
+                                                 
                                           }
                             }
-                            
-                     } else {
-                            StoryImageView(showStory: $showStory)
                      }
               }
-              .animation(.easeInOut)
+              .animation(.linear)
        }
 }
 
@@ -45,14 +46,6 @@ struct ContentView_Previews: PreviewProvider {
               ContentView()
        }
 }
-
-
-
-
-
-
-
-
 
 struct FeedView: View {
        @Binding var showStory : Bool
@@ -67,7 +60,7 @@ struct FeedView: View {
                                    StoryRawView( showStory: $showStory)
                                           .padding(.top, 15)
                                    
-                                   PostView()
+                                   PostView(showStory: $showStory)
                                    Divider()
                             }
                             .background(Color("contentPost"))

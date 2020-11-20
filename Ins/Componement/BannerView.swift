@@ -13,7 +13,7 @@ struct BannerView: View {
                      Image(systemName: "camera")
                      
                      Spacer()
-                     Text("Instagram")
+                     Text("LikeApp")
                      
                      Spacer()
                      Image(systemName: "paperplane")
